@@ -1,5 +1,5 @@
-export function timeoutUpper(val, cb) {
+export function timeoutUpper(val: string, cb: (val: string) => void) {
   setTimeout(() => {
-    cb(val);
+    cb(val.toUpperCase());
   }, 1000);
 }
