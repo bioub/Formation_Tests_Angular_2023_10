@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodosComponent } from './todos.component';
+import { TodoFormComponent } from '../todo-form/todo-form.component';
+import { TodosListComponent } from '../todos-list/todos-list.component';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
+import { FormsModule } from '@angular/forms';
 
 describe('TodosComponent', () => {
   let component: TodosComponent;
@@ -21,7 +25,15 @@ describe('TodosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TodosComponent],
+      declarations: [
+        TodosComponent,
+        TodoFormComponent,
+        TodosListComponent,
+        TodoItemComponent,
+      ],
+      imports: [
+        FormsModule
+      ]
     }).compileComponents();
   });
 
