@@ -38,3 +38,12 @@ par les propriétés suivantes dans `configureTestingModule` :
 errorOnUnknownElements: true,
 errorOnUnknownProperties: true,
 ```
+
+## Input et Output
+
+Tester dans l'ordre les inputs et outputs de :
+ 
+- `TodoItem`
+- `TodoList`
+- `TodoForm`
+

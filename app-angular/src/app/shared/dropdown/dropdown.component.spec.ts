@@ -36,4 +36,15 @@ describe('DropdownComponent', () => {
     expect(fixture.nativeElement.textContent).toContain('Titi');
     expect(fixture.nativeElement.textContent).toContain('Tata');
   });
+
+  it('should emit item when I click on it', () => {
+    const item2El = fixture.nativeElement.querySelector('.menu div:nth-child(2)');
+
+    const spy = jasmine.createSpy();
+    component.selectedChange.subscribe(spy);
+
+    item2El.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+    expect(spy).toHaveBeenCalledOnceWith('Item 2');
+  });
 });
