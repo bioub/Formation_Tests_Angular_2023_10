@@ -16,4 +16,11 @@ describe('workspace-project App', () => {
       level: logging.Level.SEVERE,
     } as logging.Entry));
   });
+
+  it('should show title', async () => {
+    await page.navigateTo();
+    const result = await page.getTitleText();
+
+    expect(result).toContain('Welcome');
+  })
 });

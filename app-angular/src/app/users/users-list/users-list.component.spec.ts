@@ -35,6 +35,7 @@ describe('UsersListComponent', () => {
   });
 
   it('should display data from userService (spyOn)', () => {
+
     expect(nativeElement.textContent).toContain('Toto');
     expect(nativeElement.textContent).toContain('Titi');
   });
