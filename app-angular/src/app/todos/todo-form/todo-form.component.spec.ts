@@ -6,24 +6,13 @@ import { TodoFormComponent } from './todo-form.component';
 describe('TodoFormComponent', () => {
   let component: TodoFormComponent;
   let fixture: ComponentFixture<TodoFormComponent>;
-  let originalConsoleError!: any;
-
-  beforeAll(() => {
-    originalConsoleError = console.error;
-    console.error = function (message?: any, ...optionalParams: any[]): void {
-      const params = optionalParams ? `\nParams: ${optionalParams}` : '';
-      fail(`Test contained console error:\n${message}${params}`);
-    };
-  });
-
-  afterAll(() => {
-    console.error = originalConsoleError;
-  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TodoFormComponent],
-      imports: [FormsModule]
+      imports: [FormsModule],
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
     }).compileComponents();
   });
 
