@@ -1,37 +1,35 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { DropdownComponent } from 'src/app/shared/dropdown/dropdown.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-  let originalConsoleError!: any;
+  let nativeElement: HTMLElement;
 
-  beforeAll(() => {
-    originalConsoleError = console.error;
-    console.error = function (message?: any, ...optionalParams: any[]): void {
-      const params = optionalParams ? `\nParams: ${optionalParams}` : '';
-      fail(`Test contained console error:\n${message}${params}`);
-    };
-  });
-
-  afterAll(() => {
-    console.error = originalConsoleError;
-  });
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() =>
+    TestBed.configureTestingModule({
       declarations: [HomeComponent],
-    }).compileComponents();
-  });
+      imports: [SharedModule],
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+    }).compileComponents()
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    nativeElement = fixture.nativeElement;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain Welcome', () => {
+    expect(nativeElement.textContent).toContain('Welcome');
   });
 });

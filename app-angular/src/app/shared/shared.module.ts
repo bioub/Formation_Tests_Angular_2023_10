@@ -1,16 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
   ],
-  declarations: [],
+  declarations: [
+    DropdownComponent
+  ],
   exports: [
     CommonModule,
     FormsModule,
+    DropdownComponent,
   ]
 })
 export class SharedModule { }
