@@ -47,3 +47,7 @@ Tester dans l'ordre les inputs et outputs de :
 - `TodoList`
 - `TodoForm`
 
+## Mock de service
+
+Tester `UsersListComponent` en remplaçant la méthode `getList$` de `UserService`
+par une méthode définie dans le test (s'inspirer des slides 72 ou 73)
