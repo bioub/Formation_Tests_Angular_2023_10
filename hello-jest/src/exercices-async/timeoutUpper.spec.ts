@@ -2,11 +2,11 @@ import { timeoutUpper } from "./timeoutUpper";
 
 describe('timeoutUpper function', () => {
   beforeEach(() => {
-    jasmine.clock().install();
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
-    jasmine.clock().uninstall();
+    jest.useRealTimers();
   });
 
   it('should call callback', (done) => {
@@ -15,25 +15,27 @@ describe('timeoutUpper function', () => {
       done();
     });
 
-    jasmine.clock().tick(1000);
+    jest.advanceTimersByTime(1000);
   });
 
   it('should call callback', () => {
-    const spy = jasmine.createSpy();
+    const spy = jest.fn();
 
     // Un spy qui appelle done
     // const spy = jasmine.createSpy('done', () => {done()});
     timeoutUpper('abc', spy);
 
-    jasmine.clock().tick(1000);
-    expect(spy).toHaveBeenCalledOnceWith('ABC');
+    jest.advanceTimersByTime(1000);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('ABC');
   });
 
   it('should call callback', () => {
-    const spy = jasmine.createSpy();
+    const spy = jest.fn();
     timeoutUpper('abc', spy);
 
-    jasmine.clock().tick(1000);
-    expect(spy).toHaveBeenCalledOnceWith('ABC');
+    jest.advanceTimersByTime(1000);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('ABC');
   });
 });

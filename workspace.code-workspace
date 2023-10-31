@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "app-angular"
+		},
+		{
+			"path": "hello-jest"
 		}
 	],
 	"settings": {}
