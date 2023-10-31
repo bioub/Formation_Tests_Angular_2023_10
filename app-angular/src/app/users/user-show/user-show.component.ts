@@ -24,8 +24,14 @@ export class UserShowComponent implements OnInit {
         map(params => Number(params.id)),
         switchMap((id: number) => this.userService.getById$(id)),
       )
-      .subscribe((user: User) => {
-        this.user = user;
+      .subscribe({
+        next: (user: User) => {
+          this.user = user;
+
+        },
+        error: (err: Error) => {
+
+        }
       });
   }
 

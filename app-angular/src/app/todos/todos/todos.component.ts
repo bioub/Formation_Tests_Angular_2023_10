@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-todos',
@@ -9,8 +9,12 @@ export class TodosComponent {
 
   public todos = ['Item 1', 'Item 2', 'Item 3'];
 
+  // constructor(protected cd: ChangeDetectorRef) {}
+
   public handleNewTodo(todo) {
     this.todos = [todo, ...this.todos];
+
+    // this.cd.detectChanges();
   }
 
 }
