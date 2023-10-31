@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodosListComponent } from './todos-list.component';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
 
 describe('TodosListComponent', () => {
   let component: TodosListComponent;
@@ -8,7 +9,7 @@ describe('TodosListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TodosListComponent],
+      declarations: [TodosListComponent, TodoItemComponent],
       errorOnUnknownElements: true,
       errorOnUnknownProperties: true,
     }).compileComponents();
@@ -23,4 +24,12 @@ describe('TodosListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show items',() => {
+    component.todos = ['My Item', 'My Other Item'];
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.textContent).toContain('My Item')
+    expect(fixture.nativeElement.textContent).toContain('My Other Item')
+  })
 });

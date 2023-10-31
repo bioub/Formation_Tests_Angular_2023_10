@@ -6,6 +6,7 @@ import { TodoFormComponent } from './todo-form.component';
 describe('TodoFormComponent', () => {
   let component: TodoFormComponent;
   let fixture: ComponentFixture<TodoFormComponent>;
+  let nativeElement: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,10 +20,30 @@ describe('TodoFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoFormComponent);
     component = fixture.componentInstance;
+    nativeElement = fixture.nativeElement;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit value from input on submit', () => {
+    component.todo = 'ABC';
+    // fixture.detectChanges();
+
+    // const formEl = nativeElement.querySelector('form');
+
+    const spy = jasmine.createSpy();
+    component.onAddTodo.subscribe(spy);
+
+    component.addTodo();
+
+    // const buttonEl = nativeElement.querySelector('button');
+    // buttonEl.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+
+    // formEl.dispatchEvent(new SubmitEvent('submit', { bubbles: true }));
+
+    expect(spy).toHaveBeenCalledOnceWith('ABC');
   });
 });
